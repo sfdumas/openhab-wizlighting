@@ -5,13 +5,16 @@ This binding integrates the [WiZ Connected](https://www.wizconnected.com/en-US/)
 This binding operates completely within the local network - the discovery, control, and status monitoring is entirely over UDP in the local network. The binding never attempts to contact the WiZ servers in any way but does not stop them from doing so independently. It should not interfer in any way with control of the bulbs via the WiZ app or any other service integrated with the WiZ app (ie: Alexa, IFTTT, SmartThings). Any changes made to the bulb state outside of openHAB should be detected by the binding and vice-versa. Before using the binding, the bulbs must be set up using the WiZ iOS or Android app. Local control must also be enabled with-in the WiZ app in the app settings. (This is the default.)
 
 ## Supported Things
+
 * WiZ Full Color with Tunable White Bulbs
 * WiZ Tunable White Bulbs
 * WiZ Dimmable single-color bulbs
 * Wiz Smart Plugs
 
 _Note_ This binding was created for and tested on the full color with tunable white bulbs, however, users have reported success with other bulb types and plugs.
+
 ## Discovery
+
 New devices can be discovered by scanning and may also be discovered by background discovery.
 All discovered devices will default to 'Full Color' bulbs if unable to automatically detect the specific device type. You may need to create devices manually if desired.
 
@@ -106,6 +109,7 @@ The Binding supports the following Light Modes
 | 32 | Steampunk     |
 
 ## Bulb Limitations
+
 - The dimming channel and state channels duplicate the same values from the color channel. This is due to the way the bulbs physically work, they do not have a concept of three separate things.
 - Full-color bulbs operate in either color mode OR tunable white/color temperature mode.
 The RGB LED's are NOT used to control temperature - separate warm and cool white LED's are used. Sending a command on the color channel or the temperature channel will cause the bulb to switch the relevant mode. Sending a command on either the dimming or state channel should not cause the bulb to switch modes.
@@ -126,11 +130,14 @@ Color LivingRoom_Light_Color "Living Room Lamp" (gLivingroom) {channel="wizlight
 ## Changelog
 
 ### Version 4.0.0.0
+
 - Upgraded to build for 4.0.0 OH dependencies
 
 ### Version 3.4.0.01
+
 - Updated to build for 3.4.0 OH dependencies
 - Added ability to send the light mode name to the LightMode channel in addition to the light mode scene id. Most UI components handled this mapping automatically using the metadata, however, in rules it was cumbersome to have to look up the corresponding ids. You man now send the string name to the channel. Names are standardized for case and white space before matching. All of the below are valid in JavaScript rules:
+
 items.getItem("BulbName_LightMode").sendCommand("DayLight");
 items.getItem("BulbName_LightMode").sendCommand("Day Light");
 items.getItem("BulbName_LightMode").sendCommand("daylight");
@@ -138,10 +145,13 @@ items.getItem("BulbName_LightMode").sendCommand(12);
 items.getItem("BulbName_LightMode").sendCommand("12");
 
 ### Version 3.3.0.04
+
 - Corrected bug that prevented dimming to 0 from turning off the bulbs
 
 ### Version 3.3.0.03
+
 - Restructured code to facilitate building with 3.3.0 base and prepared for community distribution.
 
 ## History and Credit
+
 I am only the latest in a long line of individuals who have picked this binding up and helped maintain it. I have a large installation of these devices in my home and have recently restructured the code, ported it to newer releases of OH and fixed a few bugs, but all credit goes to those before me that did the heavy lifting. Here I am attempting to make this easier for users to access by including it in the community marketplace.

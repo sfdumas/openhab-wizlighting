@@ -15,7 +15,7 @@ package org.openhab.binding.wizlighting.internal.entities;
 import static org.openhab.binding.wizlighting.internal.WizLightingBindingConstants.*;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
-import org.openhab.binding.wizlighting.internal.enums.*;
+import org.openhab.binding.wizlighting.internal.enums.WizLightingColorMode;
 import org.openhab.binding.wizlighting.internal.utils.WizColorConverter;
 import org.openhab.core.library.types.HSBType;
 import org.openhab.core.library.types.PercentType;
